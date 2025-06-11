@@ -1,6 +1,14 @@
 import { getUserFromSession } from "../../lib/auth";
 
-const notes: any[] = []; // ذخیره موقتی یادداشت‌ها
+// const notes: any[] = []; // ذخیره موقتی یادداشت‌ها
+
+type Note = {
+  id: number;
+  text: string;
+  user: string;
+};
+
+const notes: Note[] = [];
 
 export async function GET() {
   return Response.json(notes);

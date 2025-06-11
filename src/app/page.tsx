@@ -2,8 +2,14 @@
 import { useEffect, useState } from "react";
 import LogoutButton from "../components/LogoutButton";
 
+type Note = {
+  id: number;
+  text: string;
+  user: string;
+};
+
 export default function HomePage() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState<Note[]>([]);
   const [text, setText] = useState("");
   const [unauthorized, setUnauthorized] = useState(false);
 
@@ -25,7 +31,7 @@ export default function HomePage() {
       return;
     }
 
-    const newNote = await res.json();
+    const newNote: Note = await res.json();
     setNotes((prev) => [...prev, newNote]);
     setText("");
   };
